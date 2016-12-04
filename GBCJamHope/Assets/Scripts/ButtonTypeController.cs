@@ -55,17 +55,19 @@ public class ButtonTypeController : MonoBehaviour {
 
     public void CycleColour()
     {
+        // Being finicky
         int newColour = (int)m_colour;
         if(newColour < (int)Colour.Length)
         {
             newColour++;
-            if(newColour == (int)Colour.Length)
+            if(newColour > (int)Colour.Length - 1)
             {
                 newColour = 0;
             }
         }
 
         m_colour = (Colour)newColour;
+
     }
 
     public void SetColourValue()

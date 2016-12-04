@@ -23,6 +23,11 @@ public class ButtonPresser : MonoBehaviour {
 
     void Update()
     {
+        if(Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.Q))
+        {
+            Application.Quit();
+        }
+
         if (m_movingCamera)
         {
             if (m_puzzleMode)

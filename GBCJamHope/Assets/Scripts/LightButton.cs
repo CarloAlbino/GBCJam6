@@ -34,15 +34,19 @@ public class LightButton : MonoBehaviour {
             {
                 m_button.CycleColour();
                 m_renderer.material = m_button.GetMaterial();
+                if(m_button.IsAtTargetColour())
+                {
+                    m_isOn = true;
+                }
                 //m_light.color = m_button.GetColour();
             }
             else
             {
                 m_renderer.material = m_button.GetMaterial();
+                m_isOn = true;
                 //m_light.color = m_button.GetColour();
             }
             //m_light.intensity = 1;
-            m_isOn = true;
             m_controller.AffectOtherButtons(m_buttonNumber);
             // Play animation here
         }
@@ -52,9 +56,12 @@ public class LightButton : MonoBehaviour {
     {
         if (m_canBePressed)
         {
-            m_renderer.material = m_offMaterial;
-            //m_light.intensity = 0;
-            m_isOn = false;
+            if (!m_button.m_hasTargetColour)
+            {
+                m_renderer.material = m_offMaterial;
+                //m_light.intensity = 0;
+                m_isOn = false;
+            }
         }
     }
 
